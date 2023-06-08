@@ -47,7 +47,7 @@ app.post("/", function (req, res) {
         auth: "niyus:"+process.env.API_KEY+""
     }
 
-    const request = https.request(url, options, function (response) {
+    const requested = https.request(url, options, function (response) {
         if (response.statusCode === 200) {
             res.sendFile(__dirname + "/success.html")
         } else {
@@ -59,8 +59,8 @@ app.post("/", function (req, res) {
         })
     })
 
-    request.write(jsonData);
-    request.end();
+    requested.write(jsonData);
+    requested.end();
 
 })
 
